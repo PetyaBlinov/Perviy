@@ -16,16 +16,18 @@ def dec2bin(value):
 sleep_time=0.2
 while True:
     gpio.output(leds,dec2bin(num))
-    if gpio.input(up):
+    if gpio.input(up) and gpio.input(down):
+        num=255
+    elif gpio.input(up):
         num=num+1
         if num>255:
             num=0
         print(num,dec2bin(num))
         time.sleep(sleep_time)
-    if gpio.input(down):
+    elif gpio.input(down):
         num=num-1
         if num<0:
             num=0
         print(num,dec2bin(num))
         time.sleep(sleep_time)
-    time.sleep(0.05)
+    time.sleep(0.01)
