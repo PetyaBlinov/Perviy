@@ -24,10 +24,12 @@ while True:
             num=0
         print(num,dec2bin(num))
         time.sleep(sleep_time)
+        gpio.output(leds,dec2bin(num))
     elif gpio.input(down):
         num=num-1
         if num<0:
             num=0
         print(num,dec2bin(num))
         time.sleep(sleep_time)
+        gpio.output(leds,dec2bin(num))
     time.sleep(0.01)
