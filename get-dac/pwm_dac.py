@@ -7,6 +7,7 @@ class PWM_DAC:
         self.verbose=verbose
 
         gpio.setmode(gpio.BCM)
+        gpio.setwarnings(False)
         gpio.setup(self.gpio_pin,gpio.OUT,initial=0)
 
         self.pwm=gpio.PWM(self.gpio_pin,pwm_frequency)

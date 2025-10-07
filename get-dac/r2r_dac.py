@@ -6,6 +6,7 @@ class R2R_DAC:
         self.verbose=verbose
 
         gpio.setmode(gpio.BCM)
+        gpio.setwarnings(False)
         gpio.setup(self.gpio_bits,gpio.OUT,initial=0)
     def set_number(self,number):
         if number<0 or number>255:
