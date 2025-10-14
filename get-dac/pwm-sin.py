@@ -3,8 +3,8 @@ import signal_generator as sg
 import time
 
 ampl=3.2
-freq_sign=10
-freq_samp=1000
+freq_sign=1
+freq_samp=100
 try:
     dac=pdd.PWM_DAC(12, 500, 3.290)
     start_time=time.time()
