@@ -1,21 +1,22 @@
-import r2r_dac as r2r
+import mcp4725_driver as mcp4725
 import signal_generator as sg
 import time
+
 
 try: 
     amplitude = 2
     signal_frequency = 10
     sampling_frequency = 500
-    dac = r2r.R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.183, True)
+    mcp = mcp4725.MCP4725(5.0, 0x61, True)
     start_time=time.time()
     while True:
         try:
             current_time = time.time()-start_time
             voltage = sg.get_triangle_amplitude(signal_frequency, current_time)
-            dac.set_voltage(voltage*amplitude)
+            mcp.set_voltage(voltage*amplitude)
             sg.wait_for_sampling_period(sampling_frequency)
         except ValueError:
             print("Вы ввели не число. Попробуйте ещё раз\n")
 
 finally: 
-    dac.deinit()
+    mcp.deinit()
